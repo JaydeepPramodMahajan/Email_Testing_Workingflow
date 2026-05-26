@@ -1,0 +1,26 @@
+name: "send_email_Afetr Workflow"
+on:
+    workflow_dispatcher
+jobs:
+    send_email:
+        runs-on: ubuntu-latest
+        setps:
+            - name: "Checkout code"
+              uses: actions/checkout@v2
+            - name: "Setup the code"
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.x'
+            - name: "Install Depecndencies"
+              run: 
+                python -m pip install --upgrade pip
+                pip install smtplib email
+            - name: "Sending mail through executiong the python scripts"
+              run: python script.py
+              env:
+                WORKFLOW_NAME: ${{ github.workflow }}
+                REPO_NAME: ${{ github.repository }}
+                SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+                RECEIVER_EMIAL: ${{ secrets.RECEIVER_PASSWORD }}
+
+
