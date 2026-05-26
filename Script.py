@@ -2,7 +2,7 @@ import smtplib
 from email.mime.text import MIMEText #MIMEText is a class which is used to represent the text of the mail
 from email.mime.multipart import MIMEMultipart#its a class that represent the email message itself
 import os
-def send_mail(workflow_name, repo_name):
+def send_mail(workflow_name, repo_name,workflow_run_id):
     sender_email=os.getenv('SENDER_EMAIL')
     sender_password=os.getenv('SENDER_PASSWORD')
     receiver_email=os.getenv('RECEIVER_EMAIL')
