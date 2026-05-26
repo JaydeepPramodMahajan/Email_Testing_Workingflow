@@ -16,7 +16,7 @@ jobs:
                 python -m pip install --upgrade pip
                 
             - name: "Sending mail through executiong the python scripts"
-              run: python script.py
+              run: python Script.py
               env:
                 WORKFLOW_NAME: ${{ github.workflow }}
                 REPO_NAME: ${{ github.repository }}
